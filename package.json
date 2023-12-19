@@ -1,0 +1,12 @@
+{
+  "name": "custom-processor-examples",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:cjstadther/custom-processor-examples.git",
+  "author": "Chris Stadther <cstadther@chain.io>",
+  "license": "MIT",
+  "dependencies": {
+    "@chainio/xml": "^0.1.7",
+    "lodash": "^4.17.21"
+  }
+}
