@@ -13,7 +13,7 @@ const MAPPING = {
 }
 
 const handleFile = (file) => {
-  userLog.info('Remapping LocalClient')
+  userLog.info('Remapping ConsigneeDocumentaryAddress')
   // get the body
   const source = file.body
   // parse the xml - by default parseFromString will remove namespaces.
@@ -27,7 +27,7 @@ const handleFile = (file) => {
     return
   }
 
-  const localClient  = xml.element(xmlDocument, '/UniversalShipment/Shipment/OrganizationAddressCollection/OrganizationAddress[AddressType = "LocalClient"]/OrganizationCode')
+  const consigneeDocumentaryAddress  = xml.element(xmlDocument, '/UniversalShipment/Shipment/OrganizationAddressCollection/OrganizationAddress[AddressType = "ConsigneeDocumentaryAddress"]/OrganizationCode')
   const portOfDischarge = xml.text(xmlDocument, '/UniversalShipment/Shipment/PortOfDischarge')
   const orgCode = MAPPING[lodash.trim(lodash.toUpper(portOfDischarge))]
 
@@ -35,8 +35,8 @@ const handleFile = (file) => {
   userLog.info(`New mapped value: ${orgCode}`)
 
   if (orgCode) {
-    userLog.info('Remapping LocalClient to new OrgCode')
-    localClient.setTextContent(orgCode)
+    userLog.info('Remapping ConsigneeDocumentaryAddress to new OrgCode')
+    consigneeDocumentaryAddress.setTextContent(orgCode)
   }
 
   return {
